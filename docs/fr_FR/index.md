@@ -10,7 +10,7 @@ Selon le type de compteur, 2 types de données peuvent être récupérées :
 
 Toujours selon le type de compteur, les données disponibles ne sont pas les mêmes tout comme leur fréquence de mise à disposition.
 
-| **Type de compteur** | Données publiées | Données informatives | Fréquence de relève | Fréquence d'appels |
+| **Type de compteur** | Données publiées | Données informatives | Fréquence de relève | Fréquence d'appel |
 |:---:|---|---|---|---|
 | **6M** *(particuliers)* | Données semestrielles | | Tous les 6 mois de J+2 à J+3 après la relève à pied | 1 à 2 fois par mois |
 | **1M** *(particuliers)* | Données mensuelles mois M-1 | Données quotidiennes :<br>  - estimées<br>  - définitives mois M-1 | Tous les mois de J+2 à J+3 après la date de publication *(publiées & informatives définitives)*<br>Tous les jours de J+1 à J+3 *(informatives estimées)* | 1 à 2 fois par mois *(publiées)*<br>1 fois par jour *(informatives)* |
@@ -33,7 +33,7 @@ Comme tout plugin Jeedom, le plugin **GRDF** doit être activé après l'install
 
 Pour commencer il faut autoriser le partage des données GRDF avec Jeedom en cliquant sur l'image **Autoriser l'accès au compte GRDF** depuis la page de configuration du plugin :
 
-![Lien espace client GRDF](../images/link_grdf)
+![Lien espace client GRDF](../images/link_grdf.jpg)
 
 Vous êtes alors redirigé vers cette page sur laquelle il faut renseigner **vos identifiants au market Jeedom** puis cliquer sur le bouton **Valider** :
 
