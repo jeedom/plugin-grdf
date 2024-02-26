@@ -48,8 +48,8 @@ Sélectionnez vos consentements puis cliquez sur le bouton **Valider** :
  - **Mes données de consommation gaz** : **Oui** *(obligatoire)*
    - **Date de début** : **1er janvier de l'année en cours** ou 1er janvier jusqu'à 4 années en arrière pour consulter les années précédentes dans Jeedom.
    - **Date de fin** : Au choix, la même date que celle de fin de consentement par exemple.
-	 - **Données publiées** : **Oui** *(obligatoire)*
-	 - **Données informatives** : **Oui** *(fortement conseillé)*
+   - **Données publiées** : **Oui** *(obligatoire)*
+   - **Données informatives** : **Oui** *(fortement conseillé)*
  - **Mes données contractuelles** : **Oui** *(facultatif)*
  - **Mes données techniques** : **Oui** *(obligatoire)*
  - **Date de début de consentement** : **Date du jour**
