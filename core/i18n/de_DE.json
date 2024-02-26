@@ -134,6 +134,6 @@
         "Enregistrement historique": "Historischer Rekord"
     },
     "info.json": {
-        "": ""
+        "Récupérez les données de vos compteurs de gaz communicants à partir de votre espace client GRDF. Il suffit d'autoriser le partage des données avec Jeedom et d'indiquer le numéro d'identification PCE du compteur concerné.": "Rufen Sie Daten Ihrer kommunizierenden Gaszähler aus Ihrem GRDF-Kundenbereich ab. Autorisieren Sie einfach den Datenaustausch mit Jeedom und geben Sie die PCE-Identifikationsnummer des betreffenden Zählers an"
     }
 }

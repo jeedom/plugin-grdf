@@ -134,6 +134,6 @@
         "Enregistrement historique": "Enregistrement historique"
     },
     "info.json": {
-        "": ""
+        "Récupérez les données de vos compteurs de gaz communicants à partir de votre espace client GRDF. Il suffit d'autoriser le partage des données avec Jeedom et d'indiquer le numéro d'identification PCE du compteur concerné.": "Récupérez les données de vos compteurs de gaz communicants à partir de votre espace client GRDF. Il suffit d'autoriser le partage des données avec Jeedom et d'indiquer le numéro d'identification PCE du compteur concerné."
     }
 }
