@@ -2,9 +2,9 @@
     "id": "grdf",
     "name": "GRDF",
     "description": {
-        "fr_FR": ""
+        "fr_FR": "Récupérez les données de vos compteurs de gaz communicants à partir de votre espace client GRDF. Il suffit d'autoriser le partage des données avec Jeedom et d'indiquer le numéro d'identification PCE du compteur concerné."
     },
-    "utilization": "",
+    "utilization": "Donnez votre consentement pour l'accès à votre espace client GRDF en cliquant sur l'image depuis la configuration générale du plugin puis créez un équipement et renseignez le numéro du PCE.",
     "licence": "AGPL",
     "author": "Jeedom SAS",
     "require": "4.2",
@@ -34,7 +34,6 @@
         "rpi",
         "docker",
         "diy",
-        "v4",
         "atlas"
     ]
 }
