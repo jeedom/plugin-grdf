@@ -171,7 +171,7 @@ class grdf extends eqLogic {
     $direction = array(
       'short' => str_replace(['consos', 'injections'], ['conso', 'inj'], $explodeUrl[1]),
       'long' => str_replace(['consos', 'injections'], ['consommation', 'injection'], $explodeUrl[1]),
-      'mix' => str_replace(['consos', 'injections'], ['conso', 'injection'], $explodeUrl[1])
+      'mix' => rtrim($explodeUrl[1], 's')
     );
     $dates = array(
       'start' => ($_fromBegin) ? $this->getConfiguration('access_rights')['perim_donnees_' . $direction['short'] . '_debut'] : date('Y-01-01'),
