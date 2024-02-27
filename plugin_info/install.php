@@ -17,6 +17,12 @@
 
 require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
+function grdf_update() {
+	foreach (grdf::byType('grdf', true) as $meter) {
+		$meter->save();
+	}
+}
+
 function grdf_remove() {
 	if (is_object($cron = cron::byClassAndFunction('grdf', 'pull'))) {
 		$cron->remove();
