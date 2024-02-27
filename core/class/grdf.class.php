@@ -349,9 +349,10 @@ class grdf extends eqLogic {
     log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __("Mise à jour des autorisations d'accès en cours...", __FILE__));
     $pceId = $this->getConfiguration('pce_id');
     $accessRights = $this->callGRDF('/adict/v2/droits_acces', array('id_pce' => [$pceId]));
-    if (isset($accessRights[0]['etat_droit_acces'])) {
+    $lastConsent = $accessRights[count($accessRights) - 2];
+    if (isset($lastConsent['etat_droit_acces'])) {
       $filter = array('etat_droit_acces', 'date_debut_droit_acces', 'date_fin_droit_acces', 'perim_donnees_contractuelles', 'perim_donnees_techniques', 'perim_donnees_informatives', 'perim_donnees_publiees', 'perim_donnees_conso_debut', 'perim_donnees_conso_fin', 'perim_donnees_inj_debut', 'perim_donnees_inj_fin');
-      $neededRights = array_intersect_key($accessRights[0], array_fill_keys($filter, null));
+      $neededRights = array_intersect_key($lastConsent, array_fill_keys($filter, null));
       log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . print_r($neededRights, true));
       $this->setConfiguration('access_rights', $neededRights);
 
