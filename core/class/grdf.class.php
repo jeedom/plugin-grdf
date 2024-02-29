@@ -35,7 +35,7 @@ class grdf extends eqLogic {
   }
 
   public static function cronDaily() {
-    if (!is_object($cron = cron::byClassAndFunction(__CLASS__, 'pull')) || strtotime($cron->getNextRunDate()) < time()) {
+    if (!is_object($cron = cron::byClassAndFunction(__CLASS__, 'pull')) || strtotime($cron->getNextRunDate()) > strtotime('+1 day')) {
       self::schedule('today');
     }
   }
