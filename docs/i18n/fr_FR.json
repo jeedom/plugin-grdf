@@ -3,6 +3,9 @@
         "Changelog GRDF": "Changelog GRDF",
         "IMPORTANT": "IMPORTANT",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte",
+        "29\/02\/2024": "29\/02\/2024",
+        "Enregistrement des données à leur date d'effet et non plus de relève": "Enregistrement des données à leur date d'effet et non plus de relève",
+        "Les équipements existants doivent être recréés": "Les équipements existants doivent être recréés",
         "26\/02\/2024": "26\/02\/2024",
         "Mise à disposition en version beta": "Mise à disposition en version beta"
     },
@@ -136,7 +139,7 @@
         "logs en `debug`": "logs en `debug`",
         "Lors de la 1ère sauvegarde d'un équipement actif et correctement configuré, le plugin va automatiquement intégrer les historiques disponibles sur l'espace client GRDF depuis la date de début d'accès aux données de consommation gaz": "Lors de la 1ère sauvegarde d'un équipement actif et correctement configuré, le plugin va automatiquement intégrer les historiques disponibles sur l'espace client GRDF depuis la date de début d'accès aux données de consommation gaz",
         "Ce processus est susceptible de durer un long moment, vous pouvez en suivre l'avancée depuis le menu": "Ce processus est susceptible de durer un long moment, vous pouvez en suivre l'avancée depuis le menu",
-        "Les données sont récupérées à 7h du matin au plus tard et transmises en kilowatt-heure (`kWh`": "Les données sont récupérées à 7h du matin au plus tard et transmises en kilowatt-heure (`kWh`",
-        "Elles ne sont pas mises à disposition en temps réel mais sont enregistrées à leur date de valeur dans Jeedom": "Elles ne sont pas mises à disposition en temps réel mais sont enregistrées à leur date de valeur dans Jeedom"
+        "Les données sont transmises en kilowatt-heure (`kWh`) avec une date de relève à 6h du matin": "Les données sont transmises en kilowatt-heure (`kWh`) avec une date de relève à 6h du matin",
+        "Elles ne sont pas mises à disposition en temps réel mais sont enregistrées à leur date d'effet dans Jeedom": "Elles ne sont pas mises à disposition en temps réel mais sont enregistrées à leur date d'effet dans Jeedom"
     }
 }
