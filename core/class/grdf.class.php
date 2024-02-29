@@ -58,7 +58,7 @@ class grdf extends eqLogic {
         ->setFunction('pull')
         ->setTimeout(25);
     }
-    $cron->setSchedule(cron::convertDateToCron(strtotime($_prog . ' '  . mt_rand(3, 6) . ':' . mt_rand(1, 59))))->save();
+    $cron->setSchedule(cron::convertDateToCron(strtotime($_prog . ' '  . mt_rand(9, 19) . ':' . mt_rand(1, 59))))->save();
     log::add(__CLASS__, 'info', '*** ' . __('Prochaine vérification automatique des compteurs GRDF', __FILE__) . ' : ' . $cron->getNextRunDate() . ' ***');
   }
 
