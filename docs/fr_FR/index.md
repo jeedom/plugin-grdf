@@ -75,6 +75,8 @@ Pour accéder aux différents équipements **GRDF**, il faut se rendre dans le m
 
 Une fois les autorisations d'accès validées, il ne reste plus qu'à renseigner **le numéro d'identification du PCE** concerné *(les espaces sont automatiquement supprimés)* puis sauvegarder l'équipement.
 
+L'option **Enregistrer le coefficient de conversion** permet de relever le rapport entre l'énergie réellement consommée *(kWh)* et le volume *(m3)*.
+
 Les compteurs professionnels *(MM ou JJ)* possèdent un champ de configuration complémentaire permettant de choisir le type de mesure à relever :
  - **Consommation**
  - **Injection** *(Producteurs de Biométhane)*

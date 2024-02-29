@@ -181,6 +181,7 @@ class grdf extends eqLogic {
 
     if ($this->controlAccessRight('perim_donnees_' . $explodeUrl[2], $direction['short'], $dates)) {
       $formatedData = array();
+      $includeCoef = $this->getConfiguration('include_coef', 0) == 1;
       sleep(1);
       $datas = $this->callGRDF('/adict/v2/pce/#pce_id#/' . $_url . '?date_debut=' . $dates['start'] . '&date_fin=' . $dates['end']);
       if (!isset($datas[0]['pce'])) {
@@ -203,6 +204,12 @@ class grdf extends eqLogic {
               'value' => $data['energie'],
               'date' => $endDate
             );
+            if ($includeCoef) {
+              $formatedData['coef_' . $direction['short'] . $status][] = array(
+                'value' => $data['coeff_calcul']['coeff_conversion'],
+                'date' => $endDate
+              );
+            }
             if (empty($status) && in_array($_frequency, ['1M', 'JJ'])) {
               $formatedData['daily_' . $direction['short'] . '_temp'][] = array(
                 'value' => $data['energie'],
@@ -212,6 +219,12 @@ class grdf extends eqLogic {
                 'value' => $data['energie'],
                 'date' => $endDate
               );
+              if ($includeCoef) {
+                $formatedData['coef_' . $direction['short'] . '_temp'][] = array(
+                  'value' => $data['coeff_calcul']['coeff_conversion'],
+                  'date' => $endDate
+                );
+              }
             }
           } else if ($endTime <= strtotime('+1 month ' . $data['date_debut_' . $direction['long']])) {
             $formatedData['monthly_' . $direction['short'] . $status][date('Y', $beginTime)][date('m', $beginTime)][] = array(
@@ -269,7 +282,7 @@ class grdf extends eqLogic {
             foreach ($formatedData[$cmdLogical] as $i => $data) {
               if ($i + 1 == $countDatas) {
                 $cmd->recordData($data['value'], $data['date'], true);
-                if (!($_frequency == 'JJ' && isset($explodeLogical[2]))) {
+                if ($explodeLogical[0] != 'coef' && !($_frequency == 'JJ' && isset($explodeLogical[2]))) {
                   $this->setConfiguration('reading_date' . $dataType, date('Y-m-d', strtotime('+1 day ' . $data['date'])))->save(true);
                 }
               } else {
@@ -286,19 +299,23 @@ class grdf extends eqLogic {
     $cmd = $this->getCmd($_type, $_logicalId);
     if (!is_object($cmd)) {
       $cmdsTemplate = array(
-        'daily_conso' => ['name' => __('Consommation quotidienne', __FILE__), 'order' => 0],
-        'daily_conso_temp' => ['name' => __('Consommation quotidienne estimée', __FILE__), 'order' => 1],
-        'monthly_conso' => ['name' => __('Consommation mensuelle', __FILE__), 'order' => 2],
-        'monthly_conso_temp' => ['name' => __('Consommation mensuelle estimée', __FILE__), 'order' => 3],
-        'semi-annually_conso' => ['name' => __('Consommation semestrielle', __FILE__), 'order' => 4],
-        'yearly_conso' => ['name' => __('Consommation annuelle', __FILE__), 'order' => 5],
-        'yearly_conso_temp' => ['name' => __('Consommation annuelle estimée', __FILE__), 'order' => 6],
-        'daily_inj' => ['name' => __('Injection quotidienne', __FILE__), 'order' => 7],
-        'daily_inj_temp' => ['name' => __('Injection quotidienne estimée', __FILE__), 'order' => 8],
-        'monthly_inj' => ['name' => __('Injection mensuelle', __FILE__), 'order' => 9],
-        'monthly_inj_temp' => ['name' => __('Injection mensuelle estimée', __FILE__), 'order' => 10],
-        'yearly_inj' => ['name' => __('Injection annuelle', __FILE__), 'order' => 11],
-        'yearly_inj_temp' => ['name' => __('Injection annuelle estimée', __FILE__), 'order' => 12]
+        'daily_conso' => ['name' => __('Consommation quotidienne', __FILE__), 'unite' => 'kWh', 'order' => 0],
+        'coef_conso' => ['name' => __('Coefficient de conversion (Conso jour)', __FILE__), 'unite' => '', 'order' => 1],
+        'daily_conso_temp' => ['name' => __('Consommation quotidienne estimée', __FILE__), 'unite' => 'kWh', 'order' => 2],
+        'coef_conso_temp' => ['name' => __('Coefficient de conversion estimé (Conso jour)', __FILE__), 'unite' => '', 'order' => 3],
+        'monthly_conso' => ['name' => __('Consommation mensuelle', __FILE__), 'unite' => 'kWh', 'order' => 4],
+        'monthly_conso_temp' => ['name' => __('Consommation mensuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 5],
+        'semi-annually_conso' => ['name' => __('Consommation semestrielle', __FILE__), 'unite' => 'kWh', 'order' => 6],
+        'yearly_conso' => ['name' => __('Consommation annuelle', __FILE__), 'unite' => 'kWh', 'order' => 7],
+        'yearly_conso_temp' => ['name' => __('Consommation annuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 8],
+        'daily_inj' => ['name' => __('Injection quotidienne', __FILE__), 'unite' => 'kWh', 'order' => 9],
+        'coef_inj' => ['name' => __('Coefficient de conversion (Injection jour)', __FILE__), 'unite' => '', 'order' => 10],
+        'daily_inj_temp' => ['name' => __('Injection quotidienne estimée', __FILE__), 'unite' => 'kWh', 'order' => 11],
+        'coef_inj_temp' => ['name' => __('Coefficient de conversion estimé (Injection jour)', __FILE__), 'unite' => '', 'order' => 12],
+        'monthly_inj' => ['name' => __('Injection mensuelle', __FILE__), 'unite' => 'kWh', 'order' => 13],
+        'monthly_inj_temp' => ['name' => __('Injection mensuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 14],
+        'yearly_inj' => ['name' => __('Injection annuelle', __FILE__), 'unite' => 'kWh', 'order' => 15],
+        'yearly_inj_temp' => ['name' => __('Injection annuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 16]
       );
       if (in_array($_logicalId, array_keys($cmdsTemplate))) {
         $cmd = (new grdfCmd)
@@ -312,7 +329,7 @@ class grdf extends eqLogic {
           ->setDisplay('showStatsOndashboard', 0)
           ->setDisplay('showStatsOnmobile', 0)
           ->setDisplay('graphType', 'column')
-          ->setUnite('kWh')
+          ->setUnite($cmdsTemplate[$_logicalId]['unite'])
           ->setOrder($cmdsTemplate[$_logicalId]['order'])
           ->setIsVisible(1)
           ->setIsHistorized(1);
@@ -409,6 +426,9 @@ class grdf extends eqLogic {
 class grdfCmd extends cmd {
 
   public function dontRemoveCmd() {
+    if (explode('_', $this->getLogicalId())[0] == 'coef' && $this->getEqLogic()->getConfiguration('include_coef', 0) == 0) {
+      return false;
+    }
     return true;
   }
 
@@ -418,7 +438,7 @@ class grdfCmd extends cmd {
     }
   }
 
-  public function recordData(int $_value, string $_date, bool $_event = false) {
+  public function recordData(float $_value, string $_date, bool $_event = false) {
     $datetime = strtotime($_date);
     if (empty($this->getHistory(date('Y-m-d 00:00:00', $datetime), date('Y-m-d 23:59:59', $datetime)))) {
       if ($_event) {
