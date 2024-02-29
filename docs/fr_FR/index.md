@@ -82,7 +82,7 @@ Les compteurs professionnels *(MM ou JJ)* possèdent un champ de configuration c
 
 # Commandes
 
-Les commandes sont crées automatiquement en fonction de la fréquence de relève des données *(jour, mois, semestre)* et de leur type *(définitives ou estimées)*.
+Les commandes sont créées automatiquement en fonction de la fréquence de relève des données *(jour, mois, semestre)* et de leur type *(définitives ou estimées)*.
 
 Le plugin se charge d'effectuer les calculs mensuels et annuels lorsque cela est nécessaire c'est pourquoi il est conseillé de renseigner la date de début d'accès aux données de consommation gaz au 1er janvier lors de l'étape de consentement.
 
