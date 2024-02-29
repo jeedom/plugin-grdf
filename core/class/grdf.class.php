@@ -109,7 +109,7 @@ class grdf extends eqLogic {
       switch ($frequency) {
         case '6M':
           if (empty($lastPub) || strtotime($lastPub) < strtotime('-1 month 00:00') && in_array(date('d'), [date('d', strtotime('+2 days ' . $lastPub)), date('d', strtotime('+3 days ' . $lastPub))])) {
-            $this->computeData('donnees_consos_publiees', $frequency, empty($lastPub));
+            $this->computeData('donnees_consos_publiees', $frequency, $lastPub);
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données semestrielles publiées sont à jour, aucune action', __FILE__));
           }
@@ -117,14 +117,14 @@ class grdf extends eqLogic {
 
         case '1M':
           if (empty($lastPub) || strtotime($lastPub) < strtotime('-1 month 00:00') && in_array(date('d'), [date('d', strtotime('+2 days ' . $lastPub)), date('d', strtotime('+3 days ' . $lastPub))])) {
-            $this->computeData('donnees_consos_publiees', $frequency, empty($lastPub));
+            $this->computeData('donnees_consos_publiees', $frequency, $lastPub);
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données mensuelles publiées sont à jour, aucune action', __FILE__));
           }
 
           $lastInf = $this->getConfiguration('reading_date_temp');
           if (empty($lastInf) || strtotime($lastInf) < strtotime('-1 day 00:00')) {
-            $this->computeData('donnees_consos_informatives', $frequency, empty($lastInf));
+            $this->computeData('donnees_consos_informatives', $frequency, $lastInf);
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données quotidiennes informatives sont à jour, aucune action', __FILE__));
           }
@@ -134,7 +134,7 @@ class grdf extends eqLogic {
           if (empty($lastPub) || strtotime($lastPub) < strtotime('-1 month 00:00') && date('d') >= date('d', strtotime('+2 days ' . $lastPub)) && date('d') <= date('d', strtotime('+7 weekdays ' . date('Y-m-01')))) {
             $directions = ($this->getConfiguration('measure_type') != 'both') ? [$this->getConfiguration('measure_type', 'consos')] : ['consos', 'injections'];
             foreach ($directions as $direction) {
-              $this->computeData('donnees_' . $direction . '_publiees', $frequency, empty($lastPub));
+              $this->computeData('donnees_' . $direction . '_publiees', $frequency, $lastPub);
             }
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données mensuelles publiées sont à jour, aucune action', __FILE__));
@@ -142,7 +142,7 @@ class grdf extends eqLogic {
 
           $lastInf = $this->getConfiguration('reading_date_temp');
           if (empty($lastInf) || strtotime($lastInf) < strtotime('-1 month 00:00') && date('d') >= 10 && date('d') <= 20) {
-            $this->computeData('donnees_consos_informatives', $frequency, empty($lastInf));
+            $this->computeData('donnees_consos_informatives', $frequency, $lastInf);
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données quotidiennes informatives sont à jour, aucune action', __FILE__));
           }
@@ -152,7 +152,7 @@ class grdf extends eqLogic {
           if (empty($lastPub) || strtotime($lastPub) < strtotime('-1 day 00:00')) {
             $directions = ($this->getConfiguration('measure_type') != 'both') ? [$this->getConfiguration('measure_type', 'consos')] : ['consos', 'injections'];
             foreach ($directions as $direction) {
-              $this->computeData('donnees_' . $direction . '_publiees', $frequency, empty($lastPub));
+              $this->computeData('donnees_' . $direction . '_publiees', $frequency, $lastPub);
             }
           } else {
             log::add(__CLASS__, 'debug', $this->getHumanName() . ' ' . __('Les données quotidiennes publiées sont à jour, aucune action', __FILE__));
@@ -164,9 +164,10 @@ class grdf extends eqLogic {
           break;
       }
     }
+    log::add(__CLASS__, 'debug', $this->getHumanName() . ' -----------------------------------------------------------------------');
   }
 
-  private function computeData(string $_url, string $_frequency, bool $_fromBegin = false) {
+  private function computeData(string $_url, string $_frequency, string $_lastRead) {
     $explodeUrl = explode('_', $_url);
     $direction = array(
       'short' => str_replace(['consos', 'injections'], ['conso', 'inj'], $explodeUrl[1]),
@@ -174,7 +175,7 @@ class grdf extends eqLogic {
       'mix' => rtrim($explodeUrl[1], 's')
     );
     $dates = array(
-      'start' => ($_fromBegin) ? $this->getConfiguration('access_rights')['perim_donnees_' . $direction['short'] . '_debut'] : date('Y-01-01'),
+      'start' => (empty($_lastRead)) ? $this->getConfiguration('access_rights')['perim_donnees_' . $direction['short'] . '_debut'] : date('Y-01-01', strtotime($_lastRead)),
       'end' => date('Y-m-d')
     );
 
