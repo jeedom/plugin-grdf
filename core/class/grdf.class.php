@@ -190,10 +190,10 @@ class grdf extends eqLogic {
           $data = $data[$direction['long']];
           $status = str_replace(['Provisoire', 'Définitive'], ['_temp', ''], $data['statut_' . $direction['mix']]);
           $beginTime = strtotime($data['date_debut_' . $direction['long']]);
-          $endTime = strtotime($data['date_fin_' . $direction['long']]);
-          $endDate = date('Y-m-d H:i:s', $endTime);
+          $endTime = strtotime('-1 day ' . $data['date_fin_' . $direction['long']]);
+          $endDate = date('Y-m-d', $endTime);
 
-          if (date('Y-m-d', $endTime) == date('Y-m-d', strtotime('+1 day ' . $data['date_debut_' . $direction['long']]))) {
+          if ($endDate == date('Y-m-d', $beginTime)) {
             $formatedData['daily_' . $direction['short'] . $status][] = array(
               'value' => $data['energie'],
               'date' => $endDate
@@ -252,7 +252,7 @@ class grdf extends eqLogic {
                     $cmd->recordData($monthSum, $data['date'], true);
                     $yearCmd->recordData($yearSum, $data['date'], true);
                     if (empty($dataType) && in_array($_frequency, ['1M', 'MM'])) {
-                      $this->setConfiguration('reading_date', date('Y-m-d', strtotime($data['date'])))->save(true);
+                      $this->setConfiguration('reading_date', date('Y-m-d', strtotime('+1 day ' . $data['date'])))->save(true);
                     }
                   } else {
                     $cmd->recordData($monthSum, $data['date']);
@@ -269,7 +269,7 @@ class grdf extends eqLogic {
               if ($i + 1 == $countDatas) {
                 $cmd->recordData($data['value'], $data['date'], true);
                 if (!($_frequency == 'JJ' && isset($explodeLogical[2]))) {
-                  $this->setConfiguration('reading_date' . $dataType, date('Y-m-d', strtotime($data['date'])))->save(true);
+                  $this->setConfiguration('reading_date' . $dataType, date('Y-m-d', strtotime('+1 day ' . $data['date'])))->save(true);
                 }
               } else {
                 $cmd->recordData($data['value'], $data['date']);
