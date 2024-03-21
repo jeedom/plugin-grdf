@@ -178,6 +178,9 @@ class grdf extends eqLogic {
       'start' => (empty($_lastRead)) ? $this->getConfiguration('access_rights')['perim_donnees_' . $direction['short'] . '_debut'] : date('Y-01-01', strtotime($_lastRead)),
       'end' => date('Y-m-d')
     );
+    $start3Y = strtotime("-3 years midnight");
+    if(strtotime($dates['start']) < $start3Y)
+      $dates['start'] = date('Y-m-d',$start3Y);
 
     if ($this->controlAccessRight('perim_donnees_' . $explodeUrl[2], $direction['short'], $dates)) {
       $formatedData = array();
