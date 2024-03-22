@@ -79,7 +79,7 @@
         "Description": "Description",
         "Nom": "Name",
         "Etat": "State",
-        "Actions": "Actions"
+        "Actions": "Action"
     },
     "plugins\/grdf\/desktop\/js\/grdf.js": {
         "Nom de la commande": "Command name",
