@@ -1,8 +1,8 @@
 # Registro de cambios GRDF
 
->**IMPORTANTE**
+> **IMPORTANTE**
 >
->Si no hay información sobre la actualización, significa que solo se trata de actualización de documentación, traducción o texto.
+> Si no hay información sobre la actualización, significa que solo se trata de actualización de documentación, traducción o texto.
 
 # 29/02/2024
 

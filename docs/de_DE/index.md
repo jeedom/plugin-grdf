@@ -1,25 +1,26 @@
 # GRDF-Plugin
 
-Plugin zur Datenwiederherstellung von kommunizierenden Gaszählern *(Gazpar zum Beispiel)* über [eines Kundenkontos **GRDF**](https://login.monespace.grdf.fr/mire/connexion){:target="\_blank"}.
+Plugin zur Datenwiederherstellung von kommunizierenden Gaszählern _(Gazpar zum Beispiel)_ über [eines Kundenkontos **GRDF**](https://login.monespace.grdf.fr/mire/connexion){:target="\_blank"}.
 
-Dieses Plugin ermöglicht den Zugriff auf Gasverbrauchswerte sowie ggf. Einspritzwerte *(Nur professionelle Messgeräte)*. Er benutzt **die offizielle GRDF ADICT API**.
+Dieses Plugin ermöglicht den Zugriff auf Gasverbrauchswerte sowie ggf. Einspritzwerte _(Nur professionelle Messgeräte)_. Er benutzt **die offizielle GRDF ADICT API**.
 
 Abhängig vom Zählertyp können zwei Arten von Daten wiederhergestellt werden :
- - **Veröffentlichte Daten** werden von allen Zählern bereitgestellt. Hierbei handelt es sich um an den Lieferanten übermittelte Daten, die für die Rechnungsstellung verwendet werden. Diese Daten können bis zu einem Zeitraum von maximal 5 Jahren eingesehen werden.
- - **Aufschlussreiche Daten** beziehen sich auf die täglichen Daten, die von den Zählern übermittelt werden und monatliche Daten für die Abrechnung veröffentlichen *(1M/MM)*. Diese Daten können bis zu einem Zeitraum von maximal 3 Jahren eingesehen werden.
+
+- **Veröffentlichte Daten** werden von allen Zählern bereitgestellt. Hierbei handelt es sich um an den Lieferanten übermittelte Daten, die für die Rechnungsstellung verwendet werden. Diese Daten können bis zu einem Zeitraum von maximal 5 Jahren eingesehen werden.
+- **Aufschlussreiche Daten** beziehen sich auf die täglichen Daten, die von den Zählern übermittelt werden und monatliche Daten für die Abrechnung veröffentlichen _(1M/MM)_. Diese Daten können bis zu einem Zeitraum von maximal 3 Jahren eingesehen werden.
 
 Je nach Zählertyp sind die verfügbaren Daten jedoch unterschiedlich, ebenso wie die Verfügbarkeitshäufigkeit.
 
-| **Zählertyp** | Veröffentlichte Daten | Aufschlussreiche Daten | Entlastungshäufigkeit | Anrufhäufigkeit |
-|:---:|---|---|---|---|
-| **6M** *(particuliers)* | Halbjahresdaten | | Alle 6 Monate von D+2 bis D+3 nach Übergabe | 1 bis 2 Mal im Monat |
-| **1M** *(particuliers)* | Monatliche Daten Monat M-1 | Tägliche Daten :<br>- geschätzt<br>- letzte Monate M-1 | Jeden Monat von D+2 bis D+3 nach dem Erscheinungsdatum *(veröffentlichte und endgültige Informationen)*<br>Täglich von D+1 bis D+3 *(geschätzte Informationen)* | 1 bis 2 Mal im Monat *(veröffentlicht)*<br>1 Mal pro Tag *(informatives)* |
-| **M.M.** *(professionnels)* | Monatliche Daten Monat M-1 | Täglicher Datenmonat M-1 | Jeden Monat zwischen D+2 nach dem Veröffentlichungsdatum und der 7. Olympiade des Monats M *(veröffentlicht)*<br>Jeden Monat zwischen dem 10. und 20. des Monats M *(informatives)* | 1 bis 14 Mal pro Monat *(veröffentlicht)*<br>1 bis 11 Mal pro Monat *(informatives)* |
-| **Kein Wort** *(professionnels)* | Tägliche Daten :<br>- geschätzt<br>- letzte Monate M-1 | | Täglich von D+1 bis D+2 *(geschätzt veröffentlicht)*<br>Jeden Monat zwischen der 1. und 6. Olympiade des Monats M *(endgültig veröffentlicht)* | 1 Mal pro Tag |
+|          **Zählertyp**           | Veröffentlichte Daten                                  | Aufschlussreiche Daten                                 | Entlastungshäufigkeit                                                                                                                                                               | Anrufhäufigkeit                                                                      |
+| :------------------------------: | ------------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+|     **6M** _(particuliers)_      | Halbjahresdaten                                        |                                                        | Alle 6 Monate von D+2 bis D+3 nach Übergabe                                                                                                                                         | 1 bis 2 Mal im Monat                                                                 |
+|     **1M** _(particuliers)_      | Monatliche Daten Monat M-1                             | Tägliche Daten :<br>- geschätzt<br>- letzte Monate M-1 | Jeden Monat von D+2 bis D+3 nach dem Erscheinungsdatum _(veröffentlichte und endgültige Informationen)_<br>Täglich von D+1 bis D+3 _(geschätzte Informationen)_                     | 1 bis 2 Mal im Monat _(veröffentlicht)_<br>1 Mal pro Tag _(informatives)_            |
+|   **M.M.** _(professionnels)_    | Monatliche Daten Monat M-1                             | Täglicher Datenmonat M-1                               | Jeden Monat zwischen D+2 nach dem Veröffentlichungsdatum und der 7. Olympiade des Monats M _(veröffentlicht)_<br>Jeden Monat zwischen dem 10. und 20. des Monats M _(informatives)_ | 1 bis 14 Mal pro Monat _(veröffentlicht)_<br>1 bis 11 Mal pro Monat _(informatives)_ |
+| **Kein Wort** _(professionnels)_ | Tägliche Daten :<br>- geschätzt<br>- letzte Monate M-1 |                                                        | Täglich von D+1 bis D+2 _(geschätzt veröffentlicht)_<br>Jeden Monat zwischen der 1. und 6. Olympiade des Monats M _(endgültig veröffentlicht)_                                      | 1 Mal pro Tag                                                                        |
 
->**INFORMATION**
+> **INFORMATION**
 >
->Die Zähler **6M** sind unterstützte Plugins, wurden jedoch normalerweise alle durch Zähler ersetzt **1M** Ende 2023.
+> Die Zähler **6M** sind unterstützte Plugins, wurden jedoch normalerweise alle durch Zähler ersetzt **1M** Ende 2023.
 
 # Configuration
 
@@ -27,9 +28,9 @@ Wie jedes Jeedom-Plugin ist das Plugin **GRDF** muss nach der Installation aktiv
 
 ## Plugin-Setup
 
->**INFORMATION**
+> **INFORMATION**
 >
->Fühlen sich frei **PCE-Identifikationsnummer kopieren** wenn es während dieses Vorgangs erscheint, da es während des Jeedom-Gerätekonfigurationsschritts nützlich sein wird.
+> Fühlen sich frei **PCE-Identifikationsnummer kopieren** wenn es während dieses Vorgangs erscheint, da es während des Jeedom-Gerätekonfigurationsschritts nützlich sein wird.
 
 Zunächst müssen Sie die Weitergabe von GRDF-Daten an Jeedom autorisieren, indem Sie auf das Bild klicken **Autorisieren Sie den Zugriff auf das GRDF-Konto** von der Plugin-Konfigurationsseite :
 
@@ -45,15 +46,15 @@ Anschließend werden Sie auf diese Seite weitergeleitet, auf der Sie Angaben mac
 
 Wählen Sie Ihre Einwilligungen aus und klicken Sie dann auf die Schaltfläche **Bestätigen** :
 
- - **Meine Gasverbrauchsdaten** : **Ja** *(obligatoire)*
-   - **Startdatum** : **1. Januar des laufenden Jahres** oder am 1. Januar bis zu 4 Jahren, um frühere Jahre in Jeedom zu konsultieren.
-   - **Endtermin** : Optional das gleiche Datum wie z. B. das Ende der Einwilligung.
-   - **Veröffentlichte Daten** : **Ja** *(obligatoire)*
-   - **Aufschlussreiche Daten** : **Ja** *(wärmstens empfohlen)*
- - **Meine Vertragsdaten** : **Ja** *(facultatif)*
- - **Meine technischen Daten** : **Ja** *(obligatoire)*
- - **Beginndatum der Einwilligung** : **Heutiges Datum**
- - **Enddatum der Einwilligung** : Eine Wahl.
+- **Meine Gasverbrauchsdaten** : **Ja** _(obligatoire)_
+  - **Startdatum** : **1. Januar des laufenden Jahres** oder am 1. Januar bis zu 4 Jahren, um frühere Jahre in Jeedom zu konsultieren.
+  - **Endtermin** : Optional das gleiche Datum wie z. B. das Ende der Einwilligung.
+  - **Veröffentlichte Daten** : **Ja** _(obligatoire)_
+  - **Aufschlussreiche Daten** : **Ja** _(wärmstens empfohlen)_
+- **Meine Vertragsdaten** : **Ja** _(facultatif)_
+- **Meine technischen Daten** : **Ja** _(obligatoire)_
+- **Beginndatum der Einwilligung** : **Heutiges Datum**
+- **Enddatum der Einwilligung** : Eine Wahl.
 
 ![Consentement GRDF](../images/grdf_choose.jpg)
 
@@ -61,35 +62,36 @@ Sobald Ihre Einwilligungen validiert wurden, haben Sie die Möglichkeit dazu **G
 
 ![Validation GRDF](../images/grdf_consent.jpg)
 
->**WICHTIG**
+> **WICHTIG**
 >
->Wenn Sie auf eine dieser Seiten nicht zugreifen können, deaktivieren Sie den Werbeblocker des Browsers.
+> Wenn Sie auf eine dieser Seiten nicht zugreifen können, deaktivieren Sie den Werbeblocker des Browsers.
 
 ## Gerätekonfiguration
 
 Um auf die verschiedenen Geräte zuzugreifen **GRDF**, Sie müssen zum Menü gehen **Plugins → Energie → GRDF**.
 
->**INFORMATION**
+> **INFORMATION**
 >
->Die Taste **Hinzufügen** ermöglicht Ihnen das Hinzufügen eines neuen Zählers.
+> Die Taste **Hinzufügen** ermöglicht Ihnen das Hinzufügen eines neuen Zählers.
 
-Nach der Validierung der Zugangsberechtigungen bleibt nur noch die Bereitstellung **die Identifikationsnummer des PCE** betroffen *(Leerzeichen werden automatisch entfernt)* Speichern Sie dann die Ausrüstung.
+Nach der Validierung der Zugangsberechtigungen bleibt nur noch die Bereitstellung **die Identifikationsnummer des PCE** betroffen _(Leerzeichen werden automatisch entfernt)_ Speichern Sie dann die Ausrüstung.
 
-Die Option **Speichern Sie den Umrechnungskoeffizienten** ermöglicht es Ihnen, das Verhältnis zwischen der tatsächlich verbrauchten Energie zu ermitteln *(kWh)* und die Lautstärke *(m3)*.
+Die Option **Speichern Sie den Umrechnungskoeffizienten** ermöglicht es Ihnen, das Verhältnis zwischen der tatsächlich verbrauchten Energie zu ermitteln _(kWh)_ und die Lautstärke _(m3)_.
 
-Professionelle Messgeräte *(MM oder TT)* verfügen über ein zusätzliches Konfigurationsfeld, in dem Sie die Art der durchzuführenden Messung auswählen können :
- - **Verbrauch**
- - **Injektion** *(Biomethan-Produzenten)*
- - **Die 2**
+Professionelle Messgeräte _(MM oder TT)_ verfügen über ein zusätzliches Konfigurationsfeld, in dem Sie die Art der durchzuführenden Messung auswählen können :
+
+- **Verbrauch**
+- **Injektion** _(Biomethan-Produzenten)_
+- **Die 2**
 
 # Commandes
 
-Bestellungen werden automatisch basierend auf der Häufigkeit der Datenerfassung erstellt *(Tag, Monat, Semester)* und ihre Art *(endgültig oder geschätzt)*.
+Bestellungen werden automatisch basierend auf der Häufigkeit der Datenerfassung erstellt _(Tag, Monat, Semester)_ und ihre Art _(endgültig oder geschätzt)_.
 
 Das Plugin ist dafür verantwortlich, bei Bedarf monatliche und jährliche Berechnungen durchzuführen, weshalb es ratsam ist, in der Einwilligungsphase das Startdatum des Zugriffs auf die Gasverbrauchsdaten auf den 1. Januar einzutragen.
 
-Bei der ersten Sicherung aktiver und korrekt konfigurierter Geräte integriert das Plugin automatisch die im GRDF-Kundenbereich verfügbaren Historien seit dem Startdatum des Zugriffs auf Gasverbrauchsdaten. Dieser Vorgang wird wahrscheinlich lange dauern. Sie können den Fortschritt über das Menü verfolgen **Analyse → Protokolle** *(meldet sich bei „debug“ an)*.
+Bei der ersten Sicherung aktiver und korrekt konfigurierter Geräte integriert das Plugin automatisch die im GRDF-Kundenbereich verfügbaren Historien seit dem Startdatum des Zugriffs auf Gasverbrauchsdaten. Dieser Vorgang wird wahrscheinlich lange dauern. Sie können den Fortschritt über das Menü verfolgen **Analyse → Protokolle** _(meldet sich bei „debug“ an)_.
 
->**INFORMATION**
+> **INFORMATION**
 >
->Die Datenübermittlung erfolgt in Kilowattstunden („kWh“) mit Ablesedatum 6 Uhr morgens. Sie werden nicht in Echtzeit zur Verfügung gestellt, sondern zum Zeitpunkt ihres Inkrafttretens in Jeedom erfasst.
+> Die Datenübermittlung erfolgt in Kilowattstunden („kWh“) mit Ablesedatum 6 Uhr morgens. Sie werden nicht in Echtzeit zur Verfügung gestellt, sondern zum Zeitpunkt ihres Inkrafttretens in Jeedom erfasst.

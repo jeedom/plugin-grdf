@@ -1,8 +1,8 @@
 # Changelog GRDF
 
->**IMPORTANT**
+> **IMPORTANT**
 >
->If there is no information on the update, it means that it only concerns updating documentation, translation or text.
+> If there is no information on the update, it means that it only concerns updating documentation, translation or text.
 
 # 02/29/2024
 
