@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog GRDF": "Änderungsprotokoll GRDF",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Liegen keine Informationen zur Aktualisierung vor, bedeutet dies, dass es sich nur um die Aktualisierung der Dokumentation, Übersetzung oder des Textes handelt",
+        "31\/03\/2024": "31.03.2024",
+        "Purge des historiques des données estimées configurée à 1 mois par défaut lors de la création d'un équipement": "Beim Erstellen von Geräten ist die Löschung des geschätzten Datenverlaufs standardmäßig auf 1 Monat eingestellt",
         "29\/02\/2024": "29.02.2024",
         "Enregistrement des données à leur date d'effet et non plus de relève": "Erfassung der Daten zum Zeitpunkt ihres Inkrafttretens und nicht mehr Auslesen",
         "Les équipements existants doivent être recréés": "Vorhandene Geräte müssen neu erstellt werden",
@@ -123,6 +125,7 @@
         "définitives ou estimées": "endgültig oder geschätzt",
         "Les commandes sont créées automatiquement en fonction de la fréquence de relève des données": "Bestellungen werden automatisch basierend auf der Häufigkeit der Datenerfassung erstellt",
         "et de leur type": "und ihre Art",
+        "Les commandes correspondant à des données estimées sont configurées avec une purge d'historique de \"-1 mois\" par défaut": "Bestellungen, die geschätzten Daten entsprechen, werden standardmäßig mit einer Verlaufslöschung von „-1 Monat“ konfiguriert",
         "Le plugin se charge d'effectuer les calculs mensuels et annuels lorsque cela est nécessaire c'est pourquoi il est conseillé de renseigner la date de début d'accès aux données de consommation gaz au 1er janvier lors de l'étape de consentement": "Das Plugin ist dafür verantwortlich, bei Bedarf monatliche und jährliche Berechnungen durchzuführen, weshalb es ratsam ist, in der Einwilligungsphase das Startdatum des Zugriffs auf die Gasverbrauchsdaten auf den 1. Januar einzutragen",
         "Analyse → Logs": "Analyse → Protokolle",
         "logs en `debug`": "meldet sich bei „debug“ an",

@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog GRDF": "Changelog GRDF",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "If there is no information on the update, it means that it only concerns updating documentation, translation or text",
+        "31\/03\/2024": "03\/31\/2024",
+        "Purge des historiques des données estimées configurée à 1 mois par défaut lors de la création d'un équipement": "Purge of estimated data history configured at 1 month by default when creating equipment",
         "29\/02\/2024": "02\/29\/2024",
         "Enregistrement des données à leur date d'effet et non plus de relève": "Recording of data on their effective date and no longer reading",
         "Les équipements existants doivent être recréés": "Existing equipment must be recreated",
@@ -123,6 +125,7 @@
         "définitives ou estimées": "definitive or estimated",
         "Les commandes sont créées automatiquement en fonction de la fréquence de relève des données": "Orders are created automatically based on the frequency of data collection",
         "et de leur type": "and their type",
+        "Les commandes correspondant à des données estimées sont configurées avec une purge d'historique de \"-1 mois\" par défaut": "Orders corresponding to estimated data are configured with a history purge of \"-1 month\" by default",
         "Le plugin se charge d'effectuer les calculs mensuels et annuels lorsque cela est nécessaire c'est pourquoi il est conseillé de renseigner la date de début d'accès aux données de consommation gaz au 1er janvier lors de l'étape de consentement": "The plugin is responsible for carrying out monthly and annual calculations when necessary, which is why it is advisable to enter the start date of access to gas consumption data on January 1 during the consent stage",
         "Analyse → Logs": "Analysis → Logs",
         "logs en `debug`": "logs in `debug`",

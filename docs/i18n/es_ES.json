@@ -2,6 +2,8 @@
     "changelog.md": {
         "Changelog GRDF": "Registro de cambios GRDF",
         "S'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Si no hay información sobre la actualización, significa que solo se trata de actualización de documentación, traducción o texto",
+        "31\/03\/2024": "31\/03\/2024",
+        "Purge des historiques des données estimées configurée à 1 mois par défaut lors de la création d'un équipement": "Purga del historial de datos estimado configurado en 1 mes de forma predeterminada al crear el equipo",
         "29\/02\/2024": "29\/02\/2024",
         "Enregistrement des données à leur date d'effet et non plus de relève": "Registro de datos en su fecha de vigencia y no lectura",
         "Les équipements existants doivent être recréés": "Se deben recrear los equipos existentes",
@@ -123,6 +125,7 @@
         "définitives ou estimées": "definitivo o estimado",
         "Les commandes sont créées automatiquement en fonction de la fréquence de relève des données": "Los pedidos se crean automáticamente en función de la frecuencia de recopilación de datos",
         "et de leur type": "y su tipo",
+        "Les commandes correspondant à des données estimées sont configurées avec une purge d'historique de \"-1 mois\" par défaut": "Los pedidos correspondientes a datos estimados están configurados con una limpieza del historial de \"-1 mes\" de forma predeterminada",
         "Le plugin se charge d'effectuer les calculs mensuels et annuels lorsque cela est nécessaire c'est pourquoi il est conseillé de renseigner la date de début d'accès aux données de consommation gaz au 1er janvier lors de l'étape de consentement": "El complemento se encarga de realizar cálculos mensuales y anuales cuando sea necesario, por lo que es recomendable ingresar la fecha de inicio de acceso a los datos de consumo de gas el 1 de enero durante la etapa de consentimiento",
         "Analyse → Logs": "Análisis → Registros",
         "logs en `debug`": "inicia sesión en `depuración`",
