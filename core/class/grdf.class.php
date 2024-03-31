@@ -303,23 +303,23 @@ class grdf extends eqLogic {
     $cmd = $this->getCmd($_type, $_logicalId);
     if (!is_object($cmd)) {
       $cmdsTemplate = array(
-        'daily_conso' => ['name' => __('Consommation quotidienne', __FILE__), 'unite' => 'kWh', 'order' => 0],
-        'coef_conso' => ['name' => __('Coefficient de conversion (Conso jour)', __FILE__), 'unite' => '', 'order' => 1],
-        'daily_conso_temp' => ['name' => __('Consommation quotidienne estimée', __FILE__), 'unite' => 'kWh', 'order' => 2],
-        'coef_conso_temp' => ['name' => __('Coefficient de conversion estimé (Conso jour)', __FILE__), 'unite' => '', 'order' => 3],
-        'monthly_conso' => ['name' => __('Consommation mensuelle', __FILE__), 'unite' => 'kWh', 'order' => 4],
-        'monthly_conso_temp' => ['name' => __('Consommation mensuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 5],
-        'semi-annually_conso' => ['name' => __('Consommation semestrielle', __FILE__), 'unite' => 'kWh', 'order' => 6],
-        'yearly_conso' => ['name' => __('Consommation annuelle', __FILE__), 'unite' => 'kWh', 'order' => 7],
-        'yearly_conso_temp' => ['name' => __('Consommation annuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 8],
-        'daily_inj' => ['name' => __('Injection quotidienne', __FILE__), 'unite' => 'kWh', 'order' => 9],
-        'coef_inj' => ['name' => __('Coefficient de conversion (Injection jour)', __FILE__), 'unite' => '', 'order' => 10],
-        'daily_inj_temp' => ['name' => __('Injection quotidienne estimée', __FILE__), 'unite' => 'kWh', 'order' => 11],
-        'coef_inj_temp' => ['name' => __('Coefficient de conversion estimé (Injection jour)', __FILE__), 'unite' => '', 'order' => 12],
-        'monthly_inj' => ['name' => __('Injection mensuelle', __FILE__), 'unite' => 'kWh', 'order' => 13],
-        'monthly_inj_temp' => ['name' => __('Injection mensuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 14],
-        'yearly_inj' => ['name' => __('Injection annuelle', __FILE__), 'unite' => 'kWh', 'order' => 15],
-        'yearly_inj_temp' => ['name' => __('Injection annuelle estimée', __FILE__), 'unite' => 'kWh', 'order' => 16]
+        'daily_conso' => ['name' => __('Consommation quotidienne', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 0],
+        'coef_conso' => ['name' => __('Coefficient de conversion (Conso jour)', __FILE__), 'unite' => '', 'historyPurge' => '', 'order' => 1],
+        'daily_conso_temp' => ['name' => __('Consommation quotidienne estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 2],
+        'coef_conso_temp' => ['name' => __('Coefficient de conversion estimé (Conso jour)', __FILE__), 'unite' => '', 'historyPurge' => '-1 month', 'order' => 3],
+        'monthly_conso' => ['name' => __('Consommation mensuelle', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 4],
+        'monthly_conso_temp' => ['name' => __('Consommation mensuelle estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 5],
+        'semi-annually_conso' => ['name' => __('Consommation semestrielle', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 6],
+        'yearly_conso' => ['name' => __('Consommation annuelle', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 7],
+        'yearly_conso_temp' => ['name' => __('Consommation annuelle estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 8],
+        'daily_inj' => ['name' => __('Injection quotidienne', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 9],
+        'coef_inj' => ['name' => __('Coefficient de conversion (Injection jour)', __FILE__), 'unite' => '', 'historyPurge' => '', 'order' => 10],
+        'daily_inj_temp' => ['name' => __('Injection quotidienne estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 11],
+        'coef_inj_temp' => ['name' => __('Coefficient de conversion estimé (Injection jour)', __FILE__), 'unite' => '', 'historyPurge' => '-1 month', 'order' => 12],
+        'monthly_inj' => ['name' => __('Injection mensuelle', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 13],
+        'monthly_inj_temp' => ['name' => __('Injection mensuelle estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 14],
+        'yearly_inj' => ['name' => __('Injection annuelle', __FILE__), 'unite' => 'kWh', 'historyPurge' => '', 'order' => 15],
+        'yearly_inj_temp' => ['name' => __('Injection annuelle estimée', __FILE__), 'unite' => 'kWh', 'historyPurge' => '-1 month', 'order' => 16]
       );
       if (in_array($_logicalId, array_keys($cmdsTemplate))) {
         $cmd = (new grdfCmd)
@@ -334,6 +334,7 @@ class grdf extends eqLogic {
           ->setDisplay('showStatsOnmobile', 0)
           ->setDisplay('graphType', 'column')
           ->setUnite($cmdsTemplate[$_logicalId]['unite'])
+          ->setConfiguration('historyPurge', $cmdsTemplate[$_logicalId]['historyPurge'])
           ->setOrder($cmdsTemplate[$_logicalId]['order'])
           ->setIsVisible(1)
           ->setIsHistorized(1);
@@ -449,8 +450,11 @@ class grdfCmd extends cmd {
         log::add('grdf', 'debug', $this->getHumanName() . ' ' . __('Mise à jour de la valeur', __FILE__) . ' : ' . $_date . ' => ' . $_value . ' ' . $this->getUnite());
         $this->event($_value, $_date);
       } else if ($this->getIsHistorized() == 1) {
-        log::add('grdf', 'debug', $this->getHumanName() . ' ' . __('Enregistrement historique', __FILE__) . ' : ' . $_date . ' => ' . $_value . ' ' . $this->getUnite());
-        $this->addHistoryValue($_value, $_date);
+        $historyPurge = $this->getConfiguration('historyPurge', 'never');
+        if ($historyPurge == 'never' || $datetime >= strtotime($historyPurge . ' midnight')) {
+          log::add('grdf', 'debug', $this->getHumanName() . ' ' . __('Enregistrement historique', __FILE__) . ' : ' . $_date . ' => ' . $_value . ' ' . $this->getUnite());
+          $this->addHistoryValue($_value, $_date);
+        }
       }
     }
   }
