@@ -451,7 +451,7 @@ class grdfCmd extends cmd {
         $this->event($_value, $_date);
       } else if ($this->getIsHistorized() == 1) {
         $historyPurge = $this->getConfiguration('historyPurge', 'never');
-        if ($historyPurge == 'never' || $datetime >= strtotime($historyPurge . ' midnight')) {
+        if ($historyPurge == 'never' || $datetime > strtotime($historyPurge . ' midnight')) {
           log::add('grdf', 'debug', $this->getHumanName() . ' ' . __('Enregistrement historique', __FILE__) . ' : ' . $_date . ' => ' . $_value . ' ' . $this->getUnite());
           $this->addHistoryValue($_value, $_date);
         }
